@@ -3,14 +3,11 @@
 extern crate tracing;
 #[macro_use]
 extern crate nextcamp;
-#[macro_use]
-extern crate std_plus;
 
 use axum::{
     extract::Request,
     middleware::{from_fn, Next},
     response::Response,
-    routing::get,
     Router,
 };
 use std::net::SocketAddr;
@@ -21,11 +18,15 @@ type Result<T> = core::result::Result<T, Box<dyn std::error::Error>>;
 async fn app() -> Result<()> {
     let addr = "127.0.0.1:3000".parse::<SocketAddr>()?;
 
-    let app = Router::<()>::new()
+    let _app = Router::<()>::new()
         .nest("/user", nextcamp::user::api::router())
+        .nest("/contact", nextcamp::user::api::router());
+
+    let app = Router::<()>::new()
+        .nest("/api", _app)
         .layer(from_fn(debug_logger));
 
-    info!("SERVER \n{:?}", addr);
+    info!("SERVER {:?}", addr);
     axum::serve(TcpListener::bind(&addr).await?, app).await?;
     Ok(())
 }
@@ -51,6 +52,9 @@ async fn main() -> Result<()> {
     {
         tracing_subscriber::fmt()
             .pretty()
+            .without_time()
+            .with_file(false)
+            .with_line_number(false)
             .with_max_level(tracing::Level::DEBUG)
             .init();
 
