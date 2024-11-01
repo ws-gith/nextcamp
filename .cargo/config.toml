@@ -1,0 +1,6 @@
+[env]
+
+[alias]
+nextcamp = ["run -p nextcamp"]
+api = ["run -p api"]
+bot = ["run -p bot"]

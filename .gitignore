@@ -1,0 +1,5 @@
+/target
+.mypy_cache
+node_modules
+.sveltekit
+double-zero
