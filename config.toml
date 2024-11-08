@@ -1,0 +1,26 @@
+[auth]
+# Don't change this as each key is unique across each software copy 
+key = "ffuq7234r123u9232f23f-2f23rf2-323232-q3q4tg2q3413049134mg9134g134g3g13g,qrgqgqgq"
+
+[sender]
+# Set the delay
+delay=0
+
+# You can have one or two smtp detail's
+# host - smtp host
+# port - smtp port
+# username - smtp username
+# password - smtp password 
+[[smtp]]
+name = "default"
+host = ""
+port = 0
+username = ""
+password = ""
+
+[[smtp]]
+name = "amazon"
+host = ""
+port = 0
+username = ""
+password = ""

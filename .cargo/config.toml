@@ -1,7 +1,6 @@
 [env]
 
 [alias]
-nextcamp = ["run --bin nextcamp"]
-setup = ["run --bin setup"]
-api = ["run", "--bin", "main"]
 bot = ["run --bin bot"]
+api = ["run", "--bin", "api"]
+api-client = ["run", "--bin", "api-client"]
