@@ -11,11 +11,11 @@ const SERVER_ERROR: StatusCode = StatusCode::INTERNAL_SERVER_ERROR;
 const BAD_REQUEST: StatusCode = StatusCode::BAD_REQUEST;
 
 pub(super) fn router() -> Router {
-    Router::new().route("/", get(get_user))
+    Router::new().route("/", get(GET))
 }
 
 #[cfg_attr(debug_assertions, axum::debug_handler)]
-async fn get_user() -> Result<&'static str> {
+async fn GET() -> Result<&'static str> {
     // Ok("Hey welcome to user")
 
     Err(Error::IncorrectPayload {
@@ -23,6 +23,7 @@ async fn get_user() -> Result<&'static str> {
     })
 }
 
+#[allow(dead_code)]
 #[derive(Debug)]
 enum Error {
     Failed,

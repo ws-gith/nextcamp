@@ -4,6 +4,7 @@ extern crate tracing;
 #[macro_use]
 extern crate nextcamp;
 
+use axum::serve;
 use nextcamp::api::route::api_router;
 use std::net::SocketAddr;
 use tokio::net::TcpListener;
@@ -15,7 +16,7 @@ async fn app() {
     };
 
     info!("SERVER {:?}", addr);
-    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), api_router()).await {
+    if let Err(err) = serve(TcpListener::bind(&addr).await.unwrap(), api_router()).await {
         error!("Error: {:?}", err);
     }
 }

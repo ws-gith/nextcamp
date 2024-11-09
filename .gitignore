@@ -1,9 +1,4 @@
-.cargo
 .metals
 .vscode
+.bsp
 target
-.mypy_cache
-node_modules
-.sveltekit
-double-zero
-others.md

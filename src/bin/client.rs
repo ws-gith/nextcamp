@@ -4,28 +4,33 @@ extern crate tracing;
 #[macro_use]
 extern crate nextcamp;
 
-use axum::Router;
-use nextcamp::api::route::client_router;
-use serde::{Deserialize, Serialize};
+use axum::Extension;
+use nextcamp::{api::route::client_router, Config};
 use std::net::SocketAddr;
-use tokio::net::TcpListener;
+use tokio::{fs::read_to_string, net::TcpListener};
 
 async fn app() {
-    let Ok(addr) = "127.0.0.1:3000s".parse::<SocketAddr>() else {
+    let Ok(config_file) = read_to_string("./config.toml").await else {
+        error!("Error: Unable to read the config file!");
+        return;
+    };
+
+    let Ok(addr) = "127.0.0.1:3000".parse::<SocketAddr>() else {
         error!("Error: Unable to parse socket address");
         return;
     };
 
+    let Ok(config) = toml::from_str::<Config>(&config_file) else {
+        error!("Error: Unable to parse the config information you provided");
+        return;
+    };
+
+    let router = client_router().layer(Extension(config));
+
     info!("SERVER {:?}", addr);
-    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), client_router()).await {
+    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), router).await {
         error!("Error: {:?}", err);
     }
-}
-
-#[derive(new, Debug, Deserialize, Serialize)]
-pub struct Config {
-    key: String,
-    delay: i64,
 }
 
 #[tokio::main]
