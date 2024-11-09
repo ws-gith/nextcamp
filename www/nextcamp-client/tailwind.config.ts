@@ -2,6 +2,7 @@ import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 import defaultTheme from "tailwindcss/defaultTheme"
 
 export default {
@@ -15,5 +16,18 @@ export default {
 		}
 	},
 
-	plugins: [typography, forms, containerQueries]
+	plugins: [typography, forms, containerQueries, plugin(function ({ addUtilities }) {
+		addUtilities({
+			'.center': {
+				display: 'flex',
+				justifyContent: 'center',
+				alignItems: 'center',
+			},
+			'.between': {
+				display: 'flex',
+				justifyContent: 'space-between',
+				alignItems: 'center',
+			}
+		})
+	})]
 } as Config;
