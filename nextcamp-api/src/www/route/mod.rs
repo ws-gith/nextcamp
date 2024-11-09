@@ -7,7 +7,7 @@ pub mod user;
 use super::middleware::debug_logger;
 use axum::{middleware::from_fn, Router};
 
-pub fn api_router() -> Router<()> {
+pub fn router() -> Router<()> {
     let app = Router::new()
         .nest("/user", user::router())
         .nest("/smtp", smtp::router())
@@ -16,8 +16,4 @@ pub fn api_router() -> Router<()> {
         .nest("/authenticate", auth::router());
 
     Router::new().nest("/api", app).layer(from_fn(debug_logger))
-}
-
-pub fn client_router() -> Router<()> {
-    Router::new().layer(from_fn(debug_logger))
 }

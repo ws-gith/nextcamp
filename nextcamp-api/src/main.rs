@@ -2,33 +2,21 @@
 #[macro_use]
 extern crate tracing;
 #[macro_use]
-extern crate nextcamp;
+extern crate nextcamp_api;
 
-use axum::Extension;
-use nextcamp::{api::route::client_router, Config};
+use axum::serve;
+use nextcamp_api::www::route::router;
 use std::net::SocketAddr;
-use tokio::{fs::read_to_string, net::TcpListener};
+use tokio::net::TcpListener;
 
 async fn app() {
-    let Ok(config_file) = read_to_string("./config.toml").await else {
-        error!("Error: Unable to read the config file!");
-        return;
-    };
-
-    let Ok(addr) = "127.0.0.1:3000".parse::<SocketAddr>() else {
+    let Ok(addr) = "127.0.0.1:3000s".parse::<SocketAddr>() else {
         error!("Error: Unable to parse socket address");
         return;
     };
 
-    let Ok(config) = toml::from_str::<Config>(&config_file) else {
-        error!("Error: Unable to parse the config information you provided");
-        return;
-    };
-
-    let router = client_router().layer(Extension(config));
-
     info!("SERVER {:?}", addr);
-    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), router).await {
+    if let Err(err) = serve(TcpListener::bind(&addr).await.unwrap(), router()).await {
         error!("Error: {:?}", err);
     }
 }
@@ -47,7 +35,7 @@ async fn main() {
             .with_timer(tracing_subscriber::fmt::time::uptime())
             .init();
 
-        app().await;
+        app().await
     }
 
     #[cfg(not(debug_assertions))]
@@ -60,6 +48,6 @@ async fn main() {
             .with_max_level(tracing::Level::DEBUG)
             .init();
 
-        app().await;
+        app().await
     }
 }

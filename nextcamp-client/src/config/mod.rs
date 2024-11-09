@@ -1,22 +1,10 @@
-// #![cfg_attr(debug_assertions, allow(unused_imports, dead_code))]
-
-pub mod api;
-pub mod authentication;
-pub mod lead;
-pub mod letter;
-pub mod smtp;
-pub mod user;
-
-#[macro_use]
-extern crate std_plus;
-
 use axum::{
     async_trait,
     extract::FromRequestParts,
     http::{request::Parts, StatusCode},
 };
 use serde::{Deserialize, Serialize};
-pub use std_plus::*;
+
 
 #[derive(new, Debug, Deserialize, Serialize, Clone)]
 pub struct Config {
