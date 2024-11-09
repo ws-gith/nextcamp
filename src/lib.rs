@@ -1,6 +1,11 @@
-mod user;
+#![cfg_attr(debug_assertions, allow(unused_imports, dead_code))]
 
-#[cfg_attr(debug_assertions, allow(unused_imports))]
+pub mod api;
+pub mod lead;
+pub mod letter;
+pub mod smtp;
+pub mod user;
+
 #[macro_use]
 extern crate std_plus;
 

@@ -1,4 +1,7 @@
-/target
+.cargo
+.metals
+.vscode
+target
 .mypy_cache
 node_modules
 .sveltekit

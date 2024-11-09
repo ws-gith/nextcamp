@@ -4,23 +4,18 @@ extern crate tracing;
 #[macro_use]
 extern crate nextcamp;
 
-mod config;
-mod middleware;
-mod route;
-
+use nextcamp::api::route::api_router;
 use std::net::SocketAddr;
 use tokio::net::TcpListener;
 
 async fn app() {
-    let Ok(addr) = "127.0.0.1:3000".parse::<SocketAddr>() else {
+    let Ok(addr) = "127.0.0.1:3000s".parse::<SocketAddr>() else {
         error!("Error: Unable to parse socket address");
         return;
     };
 
-    let app = route::router();
-
     info!("SERVER {:?}", addr);
-    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), app).await {
+    if let Err(err) = axum::serve(TcpListener::bind(&addr).await.unwrap(), api_router()).await {
         error!("Error: {:?}", err);
     }
 }

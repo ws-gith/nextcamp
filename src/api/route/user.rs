@@ -5,11 +5,14 @@ use axum::{
     Json, Router,
 };
 use serde::Serialize;
-use serde_json::json;
 
 type Result<T> = core::result::Result<T, Error>;
 const SERVER_ERROR: StatusCode = StatusCode::INTERNAL_SERVER_ERROR;
 const BAD_REQUEST: StatusCode = StatusCode::BAD_REQUEST;
+
+pub(super) fn router() -> Router {
+    Router::new().route("/", get(get_user))
+}
 
 #[cfg_attr(debug_assertions, axum::debug_handler)]
 async fn get_user() -> Result<&'static str> {
@@ -41,8 +44,4 @@ impl IntoResponse for Error {
             }
         }
     }
-}
-
-pub(super) fn router() -> Router {
-    Router::<()>::new().route("/", get(get_user))
 }

@@ -3,4 +3,4 @@
 [alias]
 bot = ["run --bin bot"]
 api = ["run", "--bin", "api"]
-api-client = ["run", "--bin", "api-client"]
+api-client = ["run", "--bin", "client"]
