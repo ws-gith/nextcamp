@@ -1,9 +1,9 @@
 [workspace]
 resolver = "2"
 members = [
-    "nextcamp-api",
-    "nextcamp-bot",
-    "nextcamp-client/src-tauri"
+    "api",
+    "bot",
+    "wp-client/desktop/src-tauri"
 ]
 
 [workspace.dependencies]

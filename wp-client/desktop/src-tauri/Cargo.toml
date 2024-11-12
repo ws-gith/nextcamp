@@ -1,5 +1,5 @@
 [package]
-name = "nextcamp-client"
+name = "wp-client-desktop"
 version = "0.1.0"
 description = "Nextcamp client"
 authors = ["you"]
