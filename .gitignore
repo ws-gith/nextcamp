@@ -2,3 +2,5 @@
 .vscode
 .bsp
 target
+database.db
+.bloop

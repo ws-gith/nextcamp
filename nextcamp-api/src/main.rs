@@ -10,7 +10,7 @@ use std::net::SocketAddr;
 use tokio::net::TcpListener;
 
 async fn app() {
-    let Ok(addr) = "127.0.0.1:3000s".parse::<SocketAddr>() else {
+    let Ok(addr) = "127.0.0.1:3000".parse::<SocketAddr>() else {
         error!("Error: Unable to parse socket address");
         return;
     };
