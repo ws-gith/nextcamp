@@ -1,12 +1,13 @@
 [workspace]
-resolver = "2"
 members = [
-    "api",
-    "bot", 
-    "wp-client/desktop"
+  "api",
+  "bot", 
+  "clients/desktop",
 ]
+resolver = "2"
 
 [workspace.dependencies]
+anyhow = "1.0"
 async-trait = "0.1.82"
 axum = "0.7.5"
 serde = "1.0.210"
@@ -18,4 +19,3 @@ tower-layer = "0.3.3"
 tower-service = "0.3.3"
 tracing = "0.1.40"
 tracing-subscriber = "0.3.18"
-anyhow = "1.0"

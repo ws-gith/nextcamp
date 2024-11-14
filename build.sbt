@@ -2,7 +2,7 @@ ThisBuild / scalaVersion := "3.5.2"
 ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / name := "nextcamp"
 
-lazy val wp_database = (project in file("wp-database"))
+lazy val wp_database = (project in file("database"))
     .settings(
       libraryDependencies ++= Seq()
     )
