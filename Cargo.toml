@@ -2,8 +2,8 @@
 resolver = "2"
 members = [
     "api",
-    "bot",
-    "wp-client/desktop/src-tauri"
+    "bot", 
+    "wp-client/desktop"
 ]
 
 [workspace.dependencies]
