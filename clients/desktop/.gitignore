@@ -1,4 +1,4 @@
-node_modules
+view/node_modules
 
 # Output
 view/.output
@@ -10,4 +10,4 @@ view/build
 # Vite
 view/vite.config.js.timestamp-*
 view/vite.config.ts.timestamp-*
-/v0.1-experimental
+v0.1-experimental
