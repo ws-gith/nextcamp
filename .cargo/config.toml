@@ -1,6 +1,6 @@
 [env]
 
 [alias]
-bot = ["run --bin bot"]
-api = ["run", "--bin", "api"]
-api-client = ["run", "--bin", "client"]
+bot = ["run", "-p", "nextcamp-bot"]
+api = ["run", "-p", "nextcamp-api"]
+api-client = ["run", "-p", "client"]

@@ -1,6 +1,6 @@
-.metals
 .vscode
-.bsp
 target
 database.db
-.bloop
+.mypy_cache
+.venv
+uv.lock
