@@ -37,9 +37,13 @@ async fn app() {
         ServeDir::new("v0.1-experimental").append_index_html_on_directories(true);
 
     let router = Router::new()
-        .fallback_service(static_file_service)
-        .route("/config", get(config_get))
-        .route("/content", get(content_get));
+        .nest(
+            "/api",
+            Router::new()
+                .route("/config", get(config_get))
+                .route("/content", get(content_get)),
+        )
+        .fallback_service(static_file_service);
 
     info!("SERVER {:?}", addr);
     if let Err(err) = serve(TcpListener::bind(&addr).await.unwrap(), router).await {

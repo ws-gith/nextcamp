@@ -1,1 +1,0 @@
-import{a as p,t}from"../chunks/disclose-version.V1TfQA5t.js";import"../chunks/legacy.C-fr0Ow8.js";var a=t('<p class="center p-4">Hello We got something here!</p>');function m(e){var o=a();p(e,o)}export{m as component};
