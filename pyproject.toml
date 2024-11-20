@@ -1,7 +1,0 @@
-[project]
-name = "nextcamp"
-version = "0.1.0"
-description = "Nextcamp v0.1 Experimental campaign tools"
-readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
