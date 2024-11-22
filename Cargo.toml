@@ -1,21 +1,17 @@
 [workspace]
-members = [
-  "api",
-  "bot", 
-  "clients/desktop",
-]
+members = ["api", "bot", "nextcamp"]
 resolver = "2"
 
 [workspace.dependencies]
 anyhow = "1.0"
 async-trait = "0.1.82"
-axum = "0.7.5"
-serde = "1.0.210"
+axum = {version = "0.7.5", features = ["multipart", "macros", "query"]}
+serde = {version = "1.0.210", features = ["derive"]}
 serde_json = "1.0.132"
-tokio = "1.40.0"
-tower = "0.5.1"
+tokio = {version = "1.40.0", features = ["full"]}
+tower = {version = "0.5.1", features = ["full"]}
 tower-http = "0.6.1"
 tower-layer = "0.3.3"
 tower-service = "0.3.3"
-tracing = "0.1.40"
+tracing = {version = "0.1.40", features = ["log"]}
 tracing-subscriber = "0.3.18"

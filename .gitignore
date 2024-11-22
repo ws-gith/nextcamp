@@ -1,6 +1,3 @@
 .vscode
 target
-database.db
-.mypy_cache
-.venv
-uv.lock
+notes.md

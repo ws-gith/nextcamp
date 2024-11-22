@@ -2,9 +2,7 @@
 #[macro_use]
 extern crate tracing;
 #[macro_use]
-extern crate nextcamp_api;
-#[macro_use]
-extern crate std_plus;
+extern crate nextcamp;
 
 use axum::http::HeaderMap;
 use axum::response::IntoResponse;
@@ -68,13 +66,17 @@ async fn main() {
 
 #[inline]
 pub async fn debug_logger(req: Request, next: Next) -> Response {
-    if !cfg!(debug_assertions) {
+    #[cfg(not(debug_assertions))]
+    {
         return next.run(req).await;
     }
 
-    let (parts, body) = req.into_parts();
-    tracing::info!("Got a request with parts: {:#?}", parts);
-    next.run(Request::from_parts(parts, body)).await
+    #[cfg(debug_assertions)]
+    {
+        let (parts, body) = req.into_parts();
+        tracing::info!("Got a request with parts: {:#?}", parts);
+        next.run(Request::from_parts(parts, body)).await
+    }
 }
 
 #[cfg_attr(debug_assertions, axum::debug_handler)]

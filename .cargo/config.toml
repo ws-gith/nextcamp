@@ -1,6 +1,7 @@
 [env]
+DATABASE_URL = "sqlite://db.sqlite?mode=rwc"
 
 [alias]
-bot = ["run", "-p", "nextcamp-bot"]
-api = ["run", "-p", "nextcamp-api"]
-api-client = ["run", "-p", "client"]
+bot = "run -p bot --no-default-features"
+api = "run -p api --no-default-features"
+mg = "run -p migration"

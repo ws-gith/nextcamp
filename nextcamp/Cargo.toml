@@ -1,0 +1,7 @@
+[package]
+name = "nextcamp"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+std-plus = {git = "https://github.com/0x28west-dev/std-plus", rev = "99a17bbb1670065574eb8346f8ddfcac2dc69450"}
