@@ -1,0 +1,15 @@
+{
+    "name": "@nextcamp/configs",
+    "version": "0.0.1",
+    "type": "module",
+    "exports": {
+        "./tailwind": {
+            "import": "./tailwind.config.ts",
+            "default": "./tailwind.config.ts"
+        }
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.15",
+        "typescript": "^5.7.2"
+    }
+}
