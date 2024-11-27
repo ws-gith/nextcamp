@@ -1,1 +1,0 @@
-CREATE TABLE contacts (id BIGINT PRIMARY KEY, data JSONB);

@@ -4,4 +4,11 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-std-plus = {git = "https://github.com/0x28west-dev/std-plus", rev = "99a17bbb1670065574eb8346f8ddfcac2dc69450"}
+async-trait.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+std-plus = {git = "https://github.com/0x28west-dev/std-plus", rev = "4129f81564090616f6402c1241e21891a54f90dd"}
+tracing.workspace = true
+
+[dev-dependencies]
+anyhow.workspace = true
